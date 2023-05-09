@@ -45,18 +45,17 @@
 
 
 <div id="trigo">
-    <h1>Sine function</h1>
-
     <div id="userInput">
         <label for="aInput">a =</label>
-        <input type="number" bind:value={a} id="aInput">
+        <input type="number" bind:value={a} id="aInput" max="10" min="-10">
         <label for="bInput">b =</label>
         <input type="number" bind:value={b} id="bInput" step="0.05">
         <label for="cInput">c =</label>
-        <input type="number" bind:value={c} id="cInput">
+        <input type="number" bind:value={c} id="cInput" step="10">
         <label for="dInput">d =</label>
-        <input type="number" bind:value={d} id="dInput">
+        <input type="number" bind:value={d} id="dInput" max="10" min="-10">
 
+        <p id="displayFunc">f(x) = a * sin(b * x + c) + d</p>
         <p id="displayFunc">{funcString}</p>
     </div>
 
@@ -65,13 +64,16 @@
 
 <style>
     #trigo {
-        width: 50%;
-        margin: auto;
-        padding: 0 5rem;
-        border: 1px solid black; /* just for debugging */
+        padding: 1rem;
+        height: 60vh;
+        display: grid;
+        grid-template-columns: auto 85%;
+        column-gap: 1rem;
+        justify-content: center;
     }
     #userInput {
         width: fit-content;
+        height: fit-content;
         display: grid;
         grid-template-columns: auto auto;
         row-gap: 2px;
@@ -79,6 +81,7 @@
     }
     #userInput input {
         width: 5em;
+        height: fit-content;
         font-size: large;
     }
     #userInput label {
@@ -89,5 +92,6 @@
         font-size: large;
         font-weight: bold;
         grid-column: span 2;
+        margin-bottom: 0;
     }
 </style>

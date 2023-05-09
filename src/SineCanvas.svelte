@@ -3,23 +3,32 @@
     import draw from "./drawing";
     export let a,b,c,d;
 
-    const width = 600;
-    const height = 400;
-
     afterUpdate(()=>{
         // draw sine wave and axis after a,b,c,d changed
+        const canvas = document.getElementById("sineCanvas");
+        const div = document.getElementById("canvasDiv");
+        const width = canvas.width = div.offsetWidth;
+        const height = canvas.height = div.offsetHeight;
+        console.log(document.getElementById("canvasDiv").innerHTML)
+
         draw(a,b,c,d,width,height); 
     })
 </script>
 
 
-<div>
-    <canvas id="sineCanvas" width={width} height={height}></canvas>
+<div id="canvasDiv">
+    <canvas id="sineCanvas"></canvas>
 </div>
 
 
 <style>
+    #canvasDiv {
+        height: 60vh;
+    }
+
     #sineCanvas {
-        border: 1px solid black; /* just for debugging */
+        border: 1px solid orange;
+        border-radius: 10px;
+        margin: 0;
     }
 </style>
