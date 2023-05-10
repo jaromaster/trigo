@@ -37,11 +37,9 @@
         return result;
     }
 
-
     $: {
         funcString = compileFuncString(a,b,c,d,selectedFunc);
     }
-
 </script>
 
 

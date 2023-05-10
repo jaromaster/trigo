@@ -7,7 +7,6 @@ const canvasId = "funcCanvas";
 
 // function for drawing the axis
 function drawAxis(canvasWidth, canvasHeight) {
-    // const canvas = document.getElementById("sineCanvas");
     const canvas = document.getElementById(canvasId);
     const width = canvasWidth;
     const height = canvasHeight;
@@ -78,7 +77,6 @@ function drawWave(a,b,c,d,canvasWidth,canvasHeight) {
     const maxX = stepSize*n;
     const minX = -1*stepSize*n;
     
-    // const canvas = document.getElementById("sineCanvas");
     const canvas = document.getElementById(canvasId);
     let context = canvas.getContext("2d");
 
