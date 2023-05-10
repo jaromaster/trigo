@@ -27,7 +27,7 @@
     }
 
     #sineCanvas {
-        border: 1px solid orange;
+        border: 2px solid orange;
         border-radius: 10px;
         margin: 0;
     }

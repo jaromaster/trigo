@@ -67,17 +67,20 @@
         padding: 1rem;
         height: 60vh;
         display: grid;
-        grid-template-columns: auto 85%;
+        grid-template-columns: auto 70%;
         column-gap: 1rem;
         justify-content: center;
     }
     #userInput {
         width: fit-content;
         height: fit-content;
+        padding: 1rem;
         display: grid;
         grid-template-columns: auto auto;
         row-gap: 2px;
         column-gap: 5px;
+        border: 2px solid orange;
+        border-radius: 10px;
     }
     #userInput input {
         width: 5em;
@@ -87,11 +90,13 @@
     #userInput label {
         font-size: large;
         font-weight: bold;
+        text-align: right;
     }
     #displayFunc {
-        font-size: large;
+        font-size: x-large;
         font-weight: bold;
         grid-column: span 2;
         margin-bottom: 0;
+        color: #ff3e00;
     }
 </style>
