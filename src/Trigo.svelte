@@ -1,5 +1,5 @@
 <script>
-    import SineCanvas from "./SineCanvas.svelte";
+    import FuncCanvas from "./FuncCanvas.svelte";
 
     let a = 1;
     let b = 1;
@@ -7,14 +7,15 @@
     let d = 0;
 
     let funcString = "";
+    let selectedFunc = "sin";
 
     // create string for displaying the function using parameters
-    function compileFuncString(a,b,c,d) {
+    function compileFuncString(a,b,c,d,func) {
         let result = "f(x) = "
         if (a != 1) {
             result += `${a} * `;
         }
-        result += "sin(";
+        result += `${func}(`;
         if (b != 1) {
             result += `${b} * x`;
         }
@@ -38,7 +39,7 @@
 
 
     $: {
-        funcString = compileFuncString(a,b,c,d);
+        funcString = compileFuncString(a,b,c,d,selectedFunc);
     }
 
 </script>
@@ -55,11 +56,16 @@
         <label for="dInput">d =</label>
         <input type="number" bind:value={d} id="dInput" max="10" min="-10">
 
-        <p id="displayFunc">f(x) = a * sin(b * x + c) + d</p>
+        <select id="selectFunc" bind:value={selectedFunc}>
+            <option>sin</option>
+            <option>cos</option>
+        </select>
+
+        <p id="displayFunc">f(x) = a * {selectedFunc}(b * x + c) + d</p>
         <p id="displayFunc">{funcString}</p>
     </div>
 
-    <SineCanvas a={a} b={b} c={c} d={d}/>
+    <FuncCanvas a={a} b={b} c={c} d={d} func={selectedFunc}/>
 </div>
 
 <style>
@@ -91,6 +97,10 @@
         font-size: large;
         font-weight: bold;
         text-align: right;
+    }
+    #selectFunc {
+        grid-column: 2;
+        width: 5rem;
     }
     #displayFunc {
         font-size: x-large;

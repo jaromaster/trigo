@@ -2,22 +2,21 @@
     import {afterUpdate} from "svelte";
     import draw from "./drawing";
     export let a,b,c,d;
+    export let func;
 
     afterUpdate(()=>{
-        // draw sine wave and axis after a,b,c,d changed
-        const canvas = document.getElementById("sineCanvas");
+        const canvas = document.getElementById("funcCanvas");
         const div = document.getElementById("canvasDiv");
         const width = canvas.width = div.offsetWidth;
         const height = canvas.height = div.offsetHeight;
-        console.log(document.getElementById("canvasDiv").innerHTML)
 
-        draw(a,b,c,d,width,height); 
+        draw(a,b,c,d,width,height,func); 
     })
 </script>
 
 
 <div id="canvasDiv">
-    <canvas id="sineCanvas"></canvas>
+    <canvas id="funcCanvas"></canvas>
 </div>
 
 
@@ -26,7 +25,7 @@
         height: 60vh;
     }
 
-    #sineCanvas {
+    #funcCanvas {
         border: 2px solid orange;
         border-radius: 10px;
         margin: 0;

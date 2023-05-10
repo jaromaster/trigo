@@ -3,10 +3,12 @@ const vertStepSize = 30; // vertical axis
 const offset = 10;
 const tickLen = 10;
 const deg = "°";
+const canvasId = "funcCanvas";
 
 // function for drawing the axis
 function drawAxis(canvasWidth, canvasHeight) {
-    const canvas = document.getElementById("sineCanvas");
+    // const canvas = document.getElementById("sineCanvas");
+    const canvas = document.getElementById(canvasId);
     const width = canvasWidth;
     const height = canvasHeight;
     let context = canvas.getContext("2d");
@@ -67,7 +69,8 @@ function drawWave(a,b,c,d,canvasWidth,canvasHeight) {
     const maxX = stepSize*n;
     const minX = -1*stepSize*n;
     
-    const canvas = document.getElementById("sineCanvas");
+    // const canvas = document.getElementById("sineCanvas");
+    const canvas = document.getElementById(canvasId);
     let context = canvas.getContext("2d");
 
     // style
@@ -84,10 +87,16 @@ function drawWave(a,b,c,d,canvasWidth,canvasHeight) {
     }
 }
 
-// draw axis and sine wave
-function draw(a,b,c,d,width,height) {
+// draw axis and sine/cosine wave
+function draw(a,b,c,d,width,height,func) {
     drawAxis(width, height);
-    drawWave(a,b,c,d,width,height);
+
+    if (func === "sin") {
+        drawWave(a,b,c,d,width,height); // sine
+    }
+    else {
+        drawWave(a,b,c+90,d,width,height); // create cos by shifting graph
+    }
 }
 
 
