@@ -28,34 +28,43 @@ function drawAxis(canvasWidth, canvasHeight) {
     context.lineTo(width-offset, height/2);
     context.stroke();
 
+    // calculate text width
+    const getTextWidth = (text) => {
+        return context.measureText(text).width;
+    }
+
     // ticks
     context.moveTo(width/2, height/2);
     for (let x = 0; x < width/2-offset; x+=stepSize) {
         context.moveTo(width/2+x, height/2-tickLen);
         context.lineTo(width/2+x, height/2);
         context.stroke();
-        context.fillText(String(x)+deg, width/2+x, height/2+tickLen);
+        const textWidth = getTextWidth(String(x)+deg);
+        context.fillText(String(x)+deg, width/2+x-textWidth/2, height/2+tickLen);
     }
     context.moveTo(width/2, height/2);
-    for (let x = 0; x < width/2-offset; x+=stepSize) {
+    for (let x = stepSize; x < width/2-offset; x+=stepSize) {
         context.moveTo(width/2-x, height/2-tickLen);
         context.lineTo(width/2-x, height/2);
         context.stroke();
-        context.fillText(String(-1*x)+deg, width/2-x, height/2+tickLen);
+        const textWidth = getTextWidth(String(-1*x)+deg);
+        context.fillText(String(-1*x)+deg, width/2-x-textWidth/2, height/2+tickLen);
     }
     context.moveTo(width/2, height/2);
     for (let y = vertStepSize; y < height/2-offset; y+=vertStepSize) {
         context.moveTo(width/2+tickLen, height/2+y);
         context.lineTo(width/2, height/2+y);
         context.stroke();
-        context.fillText(String(-1*y/vertStepSize), width/2-1.2*tickLen, height/2+y);
+        const textWidth = getTextWidth(String(-1*y/vertStepSize));
+        context.fillText(String(-1*y/vertStepSize), width/2-tickLen/2-textWidth, height/2+y);
     }
     context.moveTo(width/2, height/2);
-    for (let y = 0; y < height/2-offset; y+=vertStepSize) {
+    for (let y = vertStepSize; y < height/2-offset; y+=vertStepSize) {
         context.moveTo(width/2+tickLen, height/2-y);
         context.lineTo(width/2, height/2-y);
         context.stroke();
-        context.fillText(String(y/vertStepSize), width/2-tickLen, height/2-y);
+        const textWidth = getTextWidth(String(y/vertStepSize));
+        context.fillText(String(y/vertStepSize), width/2-tickLen/2-textWidth, height/2-y);
     }
 }
 
